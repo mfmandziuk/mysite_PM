@@ -16,5 +16,22 @@
 
         <button type="submit">Wyślij</button>
     </form>
+
+    <hr>
+
+    <h2>Wpisy</h2>
+
+    {% if wpisy %}
+        <ul>
+            {% for wpis in wpisy %}
+                <li>
+                    <strong>{{ wpis.imie }}</strong>: {{ wpis.wiadomosc }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak wpisów. Smuteczek.</p>
+    {% endif %}
+
 </body>
 </html>

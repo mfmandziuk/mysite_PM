@@ -52,13 +52,13 @@ def home(request):
     if request.method == "POST":
         imie = request.POST.get("imie")
         wiadomosc = request.POST.get("wiadomosc")
-
+        print(imie, wiadomosc)
         Wpis.objects.create(
             imie=imie,
             wiadomosc=wiadomosc
         )
-
-    wpisy = Wpis.objects.order_by("-data")
+    #
+    wpisy = Wpis.objects.order_by("-id")  # Pobranie wszystkich wpisów z bazy danych, posortowanych malejąco po id
 
     return render(
         request,
