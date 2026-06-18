@@ -16,12 +16,15 @@ def nowa_strona(request):
             vahicle_model= vahicle_model,
             vahicle_rok=vahicle_rok
         )
-    #
+
+    wpisy = Wpis_vehicle.objects.order_by("-id")
+        #
     # wpisy = Wpis_vehicle.objects.order_by("-id")  # Pobranie wszystkich wpisów z bazy danych, posortowanych malejąco po id
 
     return render(
         request,
-        "main.html"
+        "main.html",
+        {"wpisy": wpisy}
     )
 
 
