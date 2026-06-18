@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Strona glowna</title>
+</head>
+<body>
+    <h1>Strona główna</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="vahicle_name" placeholder="Name"><br><br>
+        <input type="text" name="vahicle_model" placeholder="Model"><br><br>
+        <input type="text" name="vahicle_rok" placeholder="Rok"><br><br>
+
+        <button type="submit">Wyślij_CAR</button>
+    </form>
+
+    <hr>
+
+    <h2>Wpisy</h2>
+
+    {% if wpisy %}
+        <ul>
+            {% for wpis in wpisy %}
+                <li>
+                    <strong>{{ wpis.imie }}</strong>: {{ wpis.wiadomosc }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak wpisów. Smuteczek.</p>
+    {% endif %}
+
+</body>
+</html>

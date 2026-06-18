@@ -1,8 +1,29 @@
+from django.shortcuts import render
+from guestbook.models import Wpis, Wpis_vehicle
 from django.http import HttpResponse
 
 
+
 def nowa_strona(request):
-    return HttpResponse("To jest moja nowa strona")
+
+    if request.method == "POST":
+        vahicle_name = request.POST.get("vahicle_name")
+        vahicle_model = request.POST.get("vahicle_model")
+        vahicle_rok = request.POST.get("vahicle_rok")
+        print(vahicle_name, vahicle_model,vahicle_rok)
+        Wpis_vehicle.objects.create(
+            vahicle_name=vahicle_name,
+            vahicle_model= vahicle_model,
+            vahicle_rok=vahicle_rok
+        )
+    #
+    # wpisy = Wpis_vehicle.objects.order_by("-id")  # Pobranie wszystkich wpisów z bazy danych, posortowanych malejąco po id
+
+    return render(
+        request,
+        "main.html"
+    )
+
 
 
 def nowa_strona2(request):
@@ -44,8 +65,8 @@ def nowa_strona2(request):
 #     return render(request, "home.html")
 
 
-from django.shortcuts import render
-from guestbook.models import Wpis
+
+
 
 def home(request):
 

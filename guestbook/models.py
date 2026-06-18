@@ -12,3 +12,13 @@ class Wpis(models.Model):
 
     def __str__(self):
         return self.imie
+
+class Wpis_vehicle(models.Model):
+    # objects = None
+    vahicle_name = models.TextField()
+    vahicle_model = models.TextField()
+    vahicle_rok = models.TextField(max_length=4)
+    # data = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.vahicle_name
